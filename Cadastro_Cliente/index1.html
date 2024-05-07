@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nabrasa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="container mt-5">
+    <img src="NABRASA.png" />
+    <h1>cadastro de Cliente</h1>
+    <form id="clienteForm">
+        <div class="input-container">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+        <button type="button" onclick="cadastrarCliente()">Cadastrar</button>
+    </form>
+    <h2>Clientes</h2>
+
+    <table id="clienteTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        function cadastrarCliente() {
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const senha = document.getElementById('senha').value;
+            fetch('http://localhost:3001/cliente', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Nome: nome,
+                    Endereco: endereco,
+                    Email: email,
+                    Telefone: telefone,
+                    Senha: senha,
+                }),
+            })
+                .then(response => response.json())
+                .then(() => {
+                    // Atualizar a tabela após cadastrar o cliente
+                    getClientes();
+                })
+                .catch(error => console.error('Erro ao cadastrar cliente:', error));
+        }
+
+        function getClientes() {
+            fetch('http://localhost:3001/cliente')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector('#clienteTable tbody');
+                    tableBody.innerHTML = '';
+                    data.forEach(cliente => {
+                        const row = tableBody.insertRow();
+                        row.innerHTML = `
+                            <td>${cliente.ID}</td>
+                            <td>${cliente.Nome}</td>
+                            <td>${cliente.Endereco}</td>
+                            <td>${cliente.Email}</td>
+                            <td>${cliente.Telefone}</td>
+                            <td>
+                                <button onclick="atualizarCliente(${cliente.ID})">Atualizar</button>
+                                <button onclick="excluirCliente(${cliente.ID})">Excluir</button>
+                            </td>
+                        `;
+                    });
+                })
+               
+                .catch(error => console.error('Erro ao obter clientes:', error));
+        }
+
+        function excluirCliente(id) {
+            fetch(`http://localhost:3001/cliente/${id}`, {
+                method: 'DELETE',
+            })
+                .then(() => {
+                    // Atualizar a tabela após excluir o cliente
+                    getClientes();
+                })
+                .catch(error => console.error('Erro ao excluir cliente:', error));
+        }
+
+        function atualizarCliente(id) {
+            const nome = prompt('Novo nome:');
+            const endereco = prompt('Novo endereço:');
+            const email = prompt('Novo email:');
+            const telefone = prompt('Novo telefone:');
+            fetch(`http://localhost:3001/cliente/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Nome: nome,
+                    Endereco: endereco,
+                    Email: email,
+                    Telefone: telefone,
+                }),
+            })
+                .then(response => response.json())
+                .then(() => {
+                    // Atualizar a tabela após atualizar o cliente
+                    getClientes();
+                })
+                .catch(error => console.error('Erro ao atualizar cliente:', error));
+        }
+
+        // Inicializar a tabela ao carregar a página
+        getClientes();
+    </script>
+</body>
+
+</html>

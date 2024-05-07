@@ -1,0 +1,197 @@
+/* Estilo geral */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+/* Cabeçalho */
+header {
+  background-color: rgb(182, 104, 3);
+  color: rgb(0, 0, 0);
+  padding: 10px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.navbar-menu {
+  list-style: none;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+.navbar-menu li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.navbar-menu a {
+  color: rgb(3, 3, 3);
+  text-decoration: none;
+}
+
+.navbar-menu a:hover {
+  color: #ddd;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.campo {
+  display: flex;
+  align-items: center;
+}
+
+.campo label {
+  width: 120px;
+  margin-right: 10px;
+}
+
+select, input[type="number"] {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Resultados */
+#listaResultados {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#listaResultados li {
+  margin-bottom: 5px;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  vertical-align: middle;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+/* Estilo para a foto de perfil */
+.preview-img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-top: 10px;
+}
+
+
+
+
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  text-align: center;
+}
+.header img {
+  max-width: 100px;
+  height: auto;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.profile img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 20px;
+  transition: filter 0.3s ease;
+}
+.profile:hover img {
+  filter: brightness(80%);
+  cursor: pointer;
+}
+.profile .user-info {
+  text-align: left;
+}
+.profile h2 {
+  margin-top: 0;
+}
+.profile input[type="file"] {
+  display: none;
+}
+.profile label {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: none;
+}
+.profile:hover label {
+  display: block;
+}
+.profile label:hover {
+  background-color: #0056b3;
+}
+.profile .description {
+  margin-top: 10px;
+}
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.navigation a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+.navigation a:hover {
+  background-color: #f0f0f0;
+}

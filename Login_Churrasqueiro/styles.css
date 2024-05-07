@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+    text-align: center;
+}
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+h1, h3 {
+    margin: 10px 0;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    width: 100%;
+    background-color: #c47908;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #c47908;
+}
+
+a {
+    text-decoration: none; /* Remove o sublinhado padrão */
+    color: #333; /* Define a cor do texto para um tom escuro */
+    font-weight: bold; /* Torna o texto em negrito */
+}
+
+a:hover {
+    color: rgb(47, 177, 7); /* Altera a cor do texto quando o mouse está sobre o link */
+}
+
+.separator {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 0;
+}
+.create-account-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #c47908;
+    color: white;
+    text-decoration: none;
+    
+    border-radius: 4px;
+}
+
+.create-account-button:hover {
+    background-color: #45a049;
+    border-color: #45a049;
+}

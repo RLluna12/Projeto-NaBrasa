@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="container mt-5">
+    <img src="NABRASA.png"/>
+    <h1>Agenda para churrasqueiro</h1>
+
+    <form id="produtoForm">
+        <div class="input-container">
+            <label for="id">ID:</label>
+            <input type="int" id="id" name="id" required>
+
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required>
+        </div>
+        <button type="button" onclick="cadastrarProduto()">Cadastrar</button>
+    </form>
+
+    <h2>Produtos</h2>
+
+    <table id="produtoTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        function cadastrarProduto() {
+            const id = document.getElementById('id').value;
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const telefone = document.getElementById('telefone').value;
+            const data = document.getElementById('data').value;
+
+            fetch('http://localhost:3000/produtos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ID: id,
+                    Nome: nome,
+                    Endereco: endereco,
+                    Telefone: telefone,
+                    Data: data,
+                }),
+            })
+            .then(response => response.json())
+            .then(() => {
+                // Atualizar a tabela após cadastrar o produto
+                getProdutos();
+            });
+        }
+
+        function getProdutos() {
+            fetch('http://localhost:3000/produtos')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.querySelector('#produtoTable tbody');
+                tableBody.innerHTML = '';
+
+                data.forEach(produto => {
+                    const row = tableBody.insertRow();
+                    row.innerHTML = `
+                        <td>${produto.ID}</td>
+                        <td>${produto.Nome}</td>
+                        <td>${produto.Endereco}</td>
+                        <td>${produto.Telefone}</td>
+                        <td>${produto.Data}</td>
+                        <td>
+                            <button onclick="atualizarProduto(${produto.ID})">Atualizar</button>
+                            <button onclick="excluirProduto(${produto.ID})">Excluir</button>
+                        </td>
+                    `;
+                });
+            });
+        }
+
+        function excluirProduto(id) {
+            fetch(`http://localhost:3000/produtos/${id}`, {
+                method: 'DELETE',
+            })
+            .then(() => {
+                // Atualizar a tabela após excluir o produto
+                getProdutos();
+            });
+        }
+
+        function atualizarProduto(id) {
+            const nome = prompt('Novo nome:');
+            const endereco = prompt('Novo endereço:');
+            const telefone = prompt('Novo telefone:');
+            const data = prompt('Nova data:');
+
+            fetch(`http://localhost:3000/produtos/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Nome: nome,
+                    Endereco: endereco,
+                    Telefone: telefone,
+                    Data: data,
+                }),
+            })
+            .then(response => response.json())
+            .then(() => {
+                // Atualizar a tabela após atualizar o produto
+                getProdutos();
+            });
+        }
+
+        // Inicializar a tabela ao carregar a página
+        getProdutos();
+    </script>
+</body>
+</html>

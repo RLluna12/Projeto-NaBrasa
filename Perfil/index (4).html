@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuário</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <div class="navbar">
+          <div class="navbar-logo"><img src="C:\Users\lucas.queiroz1_uscso\Desktop\CRUD\Logo.png" alt="Logo"></div>
+          <ul class="navbar-menu">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+          </ul>
+        </div>
+      </header>
+    <div class="profile">
+        <img id="user-photo" src="caminho_para_a_foto.jpg" alt="Foto do Usuário">
+        <input type="file" id="photo-input" accept="image/*" onchange="previewPhoto(event)">
+        <label for="photo-input">Alterar Foto</label>
+        <div class="user-info">
+            <h2>Nome do Usuário</h2>
+            <div class="description">
+                <p>Descrição do usuário</p>
+                <button onclick="editDescription()">Editar Descrição</button>
+            </div>
+        </div>
+    </div>
+    <div class="navigation">
+        <a href="C:\Users\lucas.queiroz1_uscso\Desktop\CRUD\Agenda\index.html">Agenda</a>
+        <a href="chat.html">Chat</a>
+        <a href="C:\Users\lucas.queiroz1_uscso\Desktop\CRUD\Calculadora\test.html">Calculadora</a>
+    </div>
+
+    <script>
+        function previewPhoto(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function(){
+                var dataURL = reader.result;
+                var img = document.getElementById('user-photo');
+                img.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function editDescription() {
+            // Implemente a lógica para editar a descrição aqui
+            alert("Implemente a lógica para editar a descrição aqui.");
+        }
+    </script>
+</body>
+</html>

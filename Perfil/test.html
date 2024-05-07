@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Churrasqueiro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <div class="navbar-logo"><img src="C:\Users\lucas.queiroz1_uscso\Desktop\CRUD\Logo.png" alt="Logo"></div>
+    <ul class="navbar-menu">
+      <li><a href="#">Link 1</a></li>
+      <li><a href="#">Link 2</a></li>
+      <li><a href="#">Link 3</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Perfil do Churrasqueiro</h5>
+          <form>
+            <div class="form-group">
+              <label for="photo">Foto de Perfil</label>
+              <input type="file" class="form-control-file" id="photo">
+              <img src="#" alt="Foto de Perfil" id="preview-photo" class="preview-img">
+            </div>
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" class="form-control" id="name" placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Seu email">
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Agenda</h5>
+          <p>Sua agenda de eventos aqui.</p>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Calculadora</h5>
+          <p>Sua calculadora aqui.</p>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Chat</h5>
+          <p>Aqui vai o chat para comunicação.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const photoInput = document.getElementById('photo');
+  const previewPhoto = document.getElementById('preview-photo');
+
+  photoInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function() {
+        previewPhoto.src = reader.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+
+</body>
+</html>
