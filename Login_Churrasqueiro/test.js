@@ -34,7 +34,7 @@ app.post("/login", (req, res) => {
                 return res.status(401).send('Credenciais inválidas');
             }
            
-            res.sendFile('C:\\Users\\lucas.queiroz1_uscso\\Desktop\\CRUD\\Perfil\\index (3).html');
+            res.sendFile('https://www.youtube.com/');
         }
     );
 });
