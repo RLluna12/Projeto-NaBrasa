@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuário</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+       
+            <a class="navbar-brand" href="#">
+                <img src="../Projeto-NaBrasa-main/assents/img/Logo.png" alt="Logo" height="50">
+            </a>
+            <a class="navbar-brand fw-bold"  href="#">NaBrasa</a>
+          <a class="navbar-brand" href="#">Churrasqueiro</a>
+    
+      </nav>
+    <div class="profile">
+        <img id="user-photo" src="/Projeto-NaBrasa-main/assents/img/NaBrasa1.jpeg" alt="Foto do Usuário">
+        <input type="file" id="photo-input" accept="image/*" onchange="previewPhoto(event)">
+        <label for="photo-input">Alterar Foto</label>
+        <div class="user-info">
+            <h1 id="nome" class="form-control-plaintext"></h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="mb-3">
+            <label class="form-label"></label>
+            <div class="mb-3">
+            <label class="form-label"></label>
+            <h1 id="nome" class="form-control-plaintext"></h1>
+        </div> 
+        <div id="profileDetails" class="mt-4"> 
+            <div class="mb-3">
+                <label class="form-label">Endereço:</label>
+                <p id="endereco" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <p id="email" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Telefone:</label>
+                <p id="telefone" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Senha:</label>
+                <p id="senha" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">CPF:</label>
+                <p id="cpf" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <button id="editButton" class="btn btn-primary">Alterar</button>
+            </div>
+        </div>
+        </div>
+        <div id="profileDetails" class="mt-4">
+            
+            <div class="mb-3">
+                <label class="form-label">Endereço:</label>
+                <p id="endereco" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <p id="email" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Telefone:</label>
+                <p id="telefone" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Senha:</label>
+                <p id="senha" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">CPF:</label>
+                <p id="cpf" class="form-control-plaintext"></p>
+            </div>
+            <div class="mb-3">
+                <button id="editButton" class="btn btn-primary">Alterar</button>
+            </div>
+        </div>
+
+        <form id="profileForm" class="mt-4 d-none">
+            <div class="mb-3">
+                <label for="nomeInput" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="nomeInput" name="nome" required>
+            </div>
+            <div class="mb-3">
+                <label for="enderecoInput" class="form-label">Endereço:</label>
+                <input type="text" class="form-control" id="enderecoInput" name="endereco" required>
+            </div>
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="emailInput" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefoneInput" class="form-label">Telefone:</label>
+                <input type="tel" class="form-control" id="telefoneInput" name="telefone" required>
+            </div>
+            <div class="mb-3">
+                <label for="senhaInput" class="form-label">Senha:</label>
+                <input type="password" class="form-control" id="senhaInput" name="senha" required>
+            </div>
+            <div class="mb-3">
+                <label for="cpfInput" class="form-label">CPF:</label>
+                <input type="text" class="form-control" id="cpfInput" name="cpf" required>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <button type="button" id="cancelButton" class="btn btn-secondary">Cancelar</button>
+            </div>
+        </form>
+    </div>
+    <div class="navigation">
+        <a href="agenda.html">Agenda</a>
+        <a href="chat.html">Chat</a>
+        <a href="calculadora.html">Calculadora</a>
+    </div>
+
+    <script>
+        function previewPhoto(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function(){
+                var dataURL = reader.result;
+                var img = document.getElementById('user-photo');
+                img.src = dataURL;
+                // Mostra os botões "Salvar" e "Excluir" quando a foto é alterada
+                document.querySelectorAll('.user-info button').forEach(button => button.style.display = 'inline');
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function editName() {
+            var newName = prompt("Digite o novo nome do usuário:");
+            if (newName !== null) {
+                document.getElementById('user-name').innerText = newName;
+                // Mostra os botões "Salvar" e "Excluir" quando o nome é alterado
+                document.querySelectorAll('.user-info button').forEach(button => button.style.display = 'inline');
+            }
+        }
+
+        function editDescription() {
+            // Exibe o campo de texto e os botões Salvar e Cancelar
+            document.getElementById('edit-description-field').style.display = 'block';
+            document.getElementById('edit-description-field').value = document.getElementById('user-description').innerText;
+            document.querySelector('.description button[onclick="saveDescription()"]').style.display = 'inline';
+            document.querySelector('.description button[onclick="cancelEdit()"]').style.display = 'inline';
+        }
+
+        function saveDescription() {
+            // Salva a nova descrição e esconde o campo de texto e os botões
+            var newDescription = document.getElementById('edit-description-field').value;
+            document.getElementById('user-description').innerText = newDescription;
+            document.getElementById('edit-description-field').style.display = 'none';
+            document.querySelector('.description button[onclick="saveDescription()"]').style.display = 'none';
+            document.querySelector('.description button[onclick="cancelEdit()"]').style.display = 'none';
+            // Mostra os botões "Salvar" e "Excluir" quando a descrição é alterada
+            document.querySelectorAll('.user-info button').forEach(button => button.style.display = 'inline');
+        }
+
+        function cancelEdit() {
+            // Esconde o campo de texto e os botões sem salvar as alterações
+            document.getElementById('edit-description-field').style.display = 'none';
+            document.querySelector('.description button[onclick="saveDescription()"]').style.display = 'none';
+            document.querySelector('.description button[onclick="cancelEdit()"]').style.display = 'none';
+        }
+
+        function saveChanges() {
+            // Aqui você pode enviar os dados alterados para a sua API REST e salvar no MySQL
+            // Esta função pode ser personalizada de acordo com a implementação da sua API
+            alert('Dados salvos com sucesso!');
+            // Depois de salvar, esconda os botões "Salvar" e "Excluir"
+            document.querySelectorAll('.user-info button').forEach(button => button.style.display = 'none');
+        }
+
+        function deleteUser() {
+            // Aqui você pode enviar uma requisição para excluir o usuário
+            // Esta função pode ser personalizada de acordo com a implementação da sua API
+            if (confirm("Tem certeza que deseja excluir o usuário?")) {
+                alert('Usuário excluído com sucesso!');
+                // Depois de excluir, redirecione ou faça outras ações necessárias
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

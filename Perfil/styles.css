@@ -1,0 +1,103 @@
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+}
+
+.header img {
+    max-width: 100px;
+    height: auto;
+}
+
+.header .logo-area {
+    background-color: orange;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+    transition: filter 0.3s ease;
+}
+
+.profile:hover img {
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
+.profile .user-info {
+    text-align: left;
+}
+
+.profile h2 {
+    margin-top: 0;
+}
+
+.profile input[type="file"] {
+    display: none;
+}
+
+.profile label {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: none;
+}
+
+.profile:hover label {
+    display: block;
+}
+
+.profile label:hover {
+    background-color: #0056b3;
+}
+
+.profile .description {
+    margin-top: 10px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navigation a:hover {
+    background-color: #f0f0f0;
+}
